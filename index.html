@@ -6,64 +6,219 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Projects</title>
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
     <div class="wrap">
         <div class="info">
-            <h1>My Projects</h1>
-            <p>
-                <a href="https://github.com/yogeshcoodes" target="_blank">GitHub: yogeshcoodes</a>
-            </p>
+            <div class="info-left">
+                <h1>My Projects</h1>
+                <p>
+                    <a href="https://github.com/yogeshcoodes" target="_blank">GitHub: yogeshcoodes</a>
+                    <button class="follow-btn" id="followBtn" onclick="handleFollow()">Follow</button>
+                </p>
+            </div>
         </div>
 
         <div class="projects-grid">
             <!-- PROJECT CARD 1 -->
-            <a href="https://yogeshcoodes.github.io/teslabackup/" target="_blank" class="project-card">
+            <div class="project-card">
                 <div class="image-container">
                     <img src="https://digitalcontent.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Promotional-Carousel-Model-Y-Mobile-US.png"
                         alt="Tesla Project" />
                 </div>
                 <div class="card-content">
                     <div class="project-title">Tesla Clone</div>
-                    <button>See Project</button>
+                    <a href="https://yogeshcoodes.github.io/teslabackup/" target="_blank"
+                        class="see-project-btn ripple">See Project</a>
+                    <div class="card-interactions">
+                        <button class="interaction-btn like-btn" onclick="toggleLike(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                </path>
+                            </svg>
+                            <span class="like-count">0</span>
+                        </button>
+                        <button class="interaction-btn comment-btn" onclick="toggleComments(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <span class="comment-count">0</span>
+                        </button>
+                        <button class="interaction-btn share-btn"
+                            onclick="shareProject('https://yogeshcoodes.github.io/teslabackup/')">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="comment-section">
+                        <div class="comment-input-wrapper">
+                            <textarea class="comment-input" placeholder="Write a comment..."></textarea>
+                            <button class="post-comment-btn" onclick="postComment(this)">Post</button>
+                        </div>
+                        <div class="comments-list"></div>
+                    </div>
                 </div>
-            </a>
+            </div>
 
             <!-- PROJECT CARD 2 -->
-            <a href="https://yogeshcoodes.github.io/calculator/" target="_blank" class="project-card">
+            <div class="project-card">
                 <div class="image-container">
-                    <img src="calculator.png" alt="Tesla Project" />
+                    <img src="calculator.png" alt="Calculator Project" />
                 </div>
                 <div class="card-content">
                     <div class="project-title">Calculator</div>
-                    <button>See Project</button>
+                    <a href="https://yogeshcoodes.github.io/calculator/" target="_blank"
+                        class="see-project-btn ripple">See Project</a>
+                    <div class="card-interactions">
+                        <button class="interaction-btn like-btn" onclick="toggleLike(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                </path>
+                            </svg>
+                            <span class="like-count">0</span>
+                        </button>
+                        <button class="interaction-btn comment-btn" onclick="toggleComments(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <span class="comment-count">0</span>
+                        </button>
+                        <button class="interaction-btn share-btn"
+                            onclick="shareProject('https://yogeshcoodes.github.io/calculator/')">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="comment-section">
+                        <div class="comment-input-wrapper">
+                            <textarea class="comment-input" placeholder="Write a comment..."></textarea>
+                            <button class="post-comment-btn" onclick="postComment(this)">Post</button>
+                        </div>
+                        <div class="comments-list"></div>
+                    </div>
                 </div>
-            </a>
+            </div>
 
             <!-- PROJECT CARD 3 -->
-            <a href="https://yogeshcoodes.github.io/owl-carousel/" target="_blank" class="project-card">
+            <div class="project-card">
                 <div class="image-container">
-                    <img src="slides.png" alt="owl-carousel" />
+                    <img src="slides.png" alt="Owl Carousel" />
                 </div>
                 <div class="card-content">
                     <div class="project-title">Owl Carousel</div>
-                    <button>See Project</button>
+                    <a href="https://yogeshcoodes.github.io/owl-carousel/" target="_blank"
+                        class="see-project-btn ripple">See Project</a>
+                    <div class="card-interactions">
+                        <button class="interaction-btn like-btn" onclick="toggleLike(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                </path>
+                            </svg>
+                            <span class="like-count">0</span>
+                        </button>
+                        <button class="interaction-btn comment-btn" onclick="toggleComments(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <span class="comment-count">0</span>
+                        </button>
+                        <button class="interaction-btn share-btn"
+                            onclick="shareProject('https://yogeshcoodes.github.io/owl-carousel/')">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="comment-section">
+                        <div class="comment-input-wrapper">
+                            <textarea class="comment-input" placeholder="Write a comment..."></textarea>
+                            <button class="post-comment-btn" onclick="postComment(this)">Post</button>
+                        </div>
+                        <div class="comments-list"></div>
+                    </div>
                 </div>
-            </a>
+            </div>
 
             <!-- PROJECT CARD 4 -->
-            <a href="https://yogeshcoodes.github.io/customwebsite/" target="_blank" class="project-card">
+            <div class="project-card">
                 <div class="image-container">
-                    <img src="custom.png" alt="learnit" />
+                    <img src="custom.png" alt="Custom Webpage" />
                 </div>
                 <div class="card-content">
                     <div class="project-title">Custom Webpage</div>
-                    <button>See Project</button>
+                    <a href="https://yogeshcoodes.github.io/customwebsite/" target="_blank"
+                        class="see-project-btn ripple">See Project</a>
+                    <div class="card-interactions">
+                        <button class="interaction-btn like-btn" onclick="toggleLike(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                </path>
+                            </svg>
+                            <span class="like-count">0</span>
+                        </button>
+                        <button class="interaction-btn comment-btn" onclick="toggleComments(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <span class="comment-count">0</span>
+                        </button>
+                        <button class="interaction-btn share-btn"
+                            onclick="shareProject('https://yogeshcoodes.github.io/customwebsite/')">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="comment-section">
+                        <div class="comment-input-wrapper">
+                            <textarea class="comment-input" placeholder="Write a comment..."></textarea>
+                            <button class="post-comment-btn" onclick="postComment(this)">Post</button>
+                        </div>
+                        <div class="comments-list"></div>
+                    </div>
                 </div>
-            </a>
+            </div>
         </div>
     </div>
+
+
 </body>
+<script src="script.js"></script>
 
 </html>
