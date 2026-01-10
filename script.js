@@ -58,38 +58,38 @@ function postComment(btn) {
   commentsList.scrollTop = commentsList.scrollHeight;
 }
 
-function shareProject(url) {
-  // Try to use Web Share API if available
-  if (navigator.share) {
-    navigator
-      .share({
-        title: "Check out this project!",
-        url: url,
-      })
-      .catch((err) => {
-        // If user cancels, just copy to clipboard
-        copyToClipboard(url);
-      });
-  } else {
-    // Fallback to copying to clipboard
-    copyToClipboard(url);
-  }
-}
-
-function copyToClipboard(text) {
+function shareProject(url, btn) {
+  // Copy link to clipboard
   navigator.clipboard
-    .writeText(text)
+    .writeText(url)
     .then(() => {
-      alert("Project link copied to clipboard!");
+      // Show tooltip
+      const tooltip = btn.querySelector(".link-copied-tooltip");
+      tooltip.classList.add("show");
+
+      // Hide tooltip after 2 seconds
+      setTimeout(() => {
+        tooltip.classList.remove("show");
+      }, 2000);
     })
     .catch(() => {
-      // Fallback method
+      // Fallback method for older browsers
       const textarea = document.createElement("textarea");
-      textarea.value = text;
+      textarea.value = url;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
       document.body.appendChild(textarea);
       textarea.select();
       document.execCommand("copy");
       document.body.removeChild(textarea);
-      alert("Project link copied to clipboard!");
+
+      // Show tooltip
+      const tooltip = btn.querySelector(".link-copied-tooltip");
+      tooltip.classList.add("show");
+
+      // Hide tooltip after 2 seconds
+      setTimeout(() => {
+        tooltip.classList.remove("show");
+      }, 2000);
     });
 }
